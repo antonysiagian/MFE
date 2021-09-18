@@ -44,7 +44,22 @@
 
 .column-30 {
   width: 30%;
+  margin: 3px;
   float: left;
+}
+
+.column-15 {
+  width: 15%;
+  margin: 3px;
+  float: left;
+}
+
+.f-left {
+  float: left;
+}
+
+.f-right {
+  float: right;
 }
 
 .colum-remove-float {
