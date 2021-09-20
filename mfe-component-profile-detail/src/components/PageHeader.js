@@ -49,8 +49,6 @@ export const PageHeader = () => {
   
     const customer = customers.find(customer => customer.id === id);
 
-    console.log(`Customer ${JSON.stringify(customer)}`)
-
     const details = [
         {
             label: 'id',
