@@ -27,7 +27,6 @@ function App() {
           <h3 className="slds-text-heading_label slds-truncate">Search Customer App</h3>
         </div>
         <Accordion id="searchCustomerAccordionId">
-
           <AccordionPanel expanded={expandedValue === 1} id={1} title="Simple Search" onTogglePanel={() => {
             dispatch(set(1))
           }} summary='Simple Search' >
@@ -51,10 +50,12 @@ function App() {
           }} summary='Reference Number Search'>
             <ReferenceNumberSearch />
           </AccordionPanel>
-
         </Accordion>
+        <div className="slds-align_absolute-right slds-p-top_xx-small"><Button label="Search" /></div>  
       </BrandBand>
-      <Button label="Search" />
+      
+
+      
     </div>
   );
 }
