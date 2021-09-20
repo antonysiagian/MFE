@@ -1,9 +1,6 @@
-export const SORT_OPTIONS = {
-	UP: 'up',
-	DOWN: 'down',
-};
 
-export const listOptions = [
+
+export const SEARCH_RESULT_DATA = [
 	{
 		id: '001',
 		label: 'Riley Shultz',
