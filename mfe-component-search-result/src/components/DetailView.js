@@ -1,6 +1,14 @@
+import { useSelector } from 'react-redux'
+import { Button } from '@salesforce/design-system-react';
+
 export const DetailView = () => {
-    return this.state.selected.length ? (
-        this.state.selected.map((item) => (
+
+    const selectedItems = useSelector((state) => {
+        return state.searchResultSlice.value.selectedItems;
+    })
+
+    return selectedItems.length ? (
+        selectedItems.map((item) => (
             <dl
                 key={item.id}
                 className="slds-box slds-m-left_medium slds-m-bottom_medium slds-list_horizontal slds-wrap"
@@ -50,7 +58,11 @@ export const DetailView = () => {
                 >
                     {item.bottomRightText}
                 </dd>
+                <div className="slds-p-top_x-small">
+                    <Button label="View" />
+                </div>
             </dl>
+            
         ))
     ) : (
         <div />

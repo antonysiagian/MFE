@@ -1,13 +1,39 @@
-import SplitViewHeader from '@salesforce/design-system-react/components/split-view/header';
-import SplitViewListbox from '@salesforce/design-system-react/components/split-view/listbox';
+import { SplitViewHeader, SplitViewListbox, Icon } from '@salesforce/design-system-react';
+import { HeaderAction } from './HeaderAction';
+import { HeaderControl } from './HeaderControl';
+import { HeaderTitle } from './HeaderTitle';
+import { useSelector, useDispatch } from 'react-redux'
+import { setUnRead, setSelected } from '../slices/searchResultSlice'
+
+const SORT_OPTIONS = {
+	UP: 'up',
+	DOWN: 'down',
+};
+
+const sortList = (arr, sortDirection) => arr.sort((a, b) =>
+    sortDirection === SORT_OPTIONS.DOWN
+    ? a.label > b.label
+    : b.label > a.label
+);
 
 export const MasterView = () => {
-    
+
+    const data = useSelector((state) => {
+        return state.searchResultSlice.value;
+    })
+
+    const { sortDirection, options, selectedItems, unread } = data;
+
+    const sortedList = sortList([...options], sortDirection);
+
+    const dispatch = useDispatch()
+
+
     return [
         <SplitViewHeader
             key="1"
-            onRenderActions={headerActions}
-            onRenderControls={headerControls}
+            onRenderActions={HeaderAction}
+            onRenderControls={HeaderControl}
             icon={
                 <Icon
                     assistiveText={{ label: 'User' }}
@@ -15,30 +41,28 @@ export const MasterView = () => {
                     name="lead"
                 />
             }
-            info="42 items • Updated just now"
-            title={headerTitle}
+            info="9 Items found"
+            title={HeaderTitle}
             truncate
             variant="object-home"
         />,
         <SplitViewListbox
             key="2"
             labels={{
-                header: 'Lead Score',
+                header: 'Customers',
             }}
-            sortDirection={this.state.sortDirection}
-            options={this.state.options}
+            sortDirection={sortDirection}
+            options={options}
             events={{
-                onSort: this.sortList,
+                onSort: () => sortedList,
                 onSelect: (event, { selectedItems, item }) => {
-                    this.setState({
-                        unread: this.state.unread.filter((i) => i !== item),
-                        selected: selectedItems,
-                    });
+                    console.log(`Selected Items ${JSON.stringify(selectedItems)}`)
+                    dispatch(setUnRead(unread.filter((i) => i !== item)));
+                    dispatch(setSelected(selectedItems));
                 },
             }}
-            selection={this.state.selected}
-            unread={this.state.unread}
-        />,
+            selection={selectedItems}
+            unread={unread}
+        />
     ];
-    
 }

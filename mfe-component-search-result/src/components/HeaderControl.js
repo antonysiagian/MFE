@@ -1,11 +1,9 @@
 import React from 'react';
-import PageHeaderControl from '@salesforce/design-system-react/components/page-header/control';
-import Dropdown from '@salesforce/design-system-react/components/menu-dropdown';
-import Button from '@salesforce/design-system-react/components/button'
+import {PageHeaderControl, Dropdown, Button} from '@salesforce/design-system-react';
 
 export const HeaderControl = () => (
 	<React.Fragment>
-		<PageHeaderControl>
+		{/* <PageHeaderControl>
 			<Dropdown
 				id="header-right-refresh"
 				assistiveText={{ icon: 'Checkmark with right icon' }}
@@ -40,7 +38,7 @@ export const HeaderControl = () => (
 				]}
 				value="B0"
 			/>
-		</PageHeaderControl>
+		</PageHeaderControl> */}
 		<PageHeaderControl>
 			<Button
 				assistiveText={{ icon: 'Refresh' }}

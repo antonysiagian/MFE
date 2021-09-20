@@ -1,4 +1,5 @@
 import './App.css';
+import { GlobalHeader, IconSettings } from '@salesforce/design-system-react'; 
 
 function App() {
 
@@ -12,7 +13,12 @@ function App() {
 
   return (
     <div className="mfe-container">
+      <IconSettings iconPath="/icons">
+        <GlobalHeader logoSrc="/images/logo.svg" />
+      </IconSettings>
+      <div className ="slds-p-top_x-small">
       <iframe id="micro-frontend-container" title='sample' src={pathName} className="mfe-iframe" />
+      </div>
     </div>
   );
 }

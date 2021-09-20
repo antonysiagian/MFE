@@ -1,14 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import '@salesforce-ux/design-system/assets/styles/salesforce-lightning-design-system-offline.min.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
 import { store } from './store';
 import { Provider } from 'react-redux';
 
-store.subscribe(()=> console.log(`Store... ${JSON.stringify(store.getState())}`))
+store.subscribe(()=> console.log(`@@@ Store... ${JSON.stringify(store.getState())}`))
 
 ReactDOM.render(
   <React.StrictMode>
