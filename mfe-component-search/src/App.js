@@ -2,6 +2,8 @@ import './App.css';
 import { BrandBand, Button, Accordion, AccordionPanel, Input } from '@salesforce/design-system-react';
 import { useSelector, useDispatch } from 'react-redux'
 import { set } from './slices/searchAccordionSlice'
+import { AdvanceSearch } from './components/AdvanceSearch';
+import { ReferenceNumberSearch } from './components/ReferenceNumberSearch';
 
 function App() {
 
@@ -71,22 +73,16 @@ function App() {
           <AccordionPanel expanded={expandedValue === 3} id={3} key={3} title="Advance Customer Search" onTogglePanel={() => {
             dispatch(set(3))
           }} summary='Advance Customer Search'>
+            <AdvanceSearch />
           </AccordionPanel>
 
           <AccordionPanel expanded={expandedValue === 4} id={4} key={4} title="Reference Number Search" onTogglePanel={() => {
             dispatch(set(4))
           }} summary='Reference Number Search'>
+            <ReferenceNumberSearch />
           </AccordionPanel>
         </Accordion>
-<<<<<<< HEAD
-        <div className="slds-align_absolute-right slds-p-top_xx-small"><Button label="Search" /></div>  
-      </BrandBand>
-      
-
-      
-=======
       <Button label="Search" />
->>>>>>> 71a458a1221f91b6b51c13a6a8f26b4363aa6469
     </div>
   );
 }
